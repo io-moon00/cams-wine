@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% block stylesheets %}
+<link rel="stylesheet" href="../static/style/home.css">
+{% endblock %}
+
+{% block title %}Cams Wine{% endblock %}
+
+{% block content %}
+
+
+<div class="gallery">
+    <div class="wrapper">
+        {% for image in images %}
+            <div class="img">
+                <img onclick="openImg('{{ image.img.url }}')" src="{{ image.img.url }}" alt="{{ image.img_alt }}" style="object-position: {{ image.img_position }};">
+                <span class="subtitle">{{ image.subtitle }}</span>
+            </div>
+        {% endfor %}
+    </div>
+    <div id="image-container" class="image-container d-none">
+        <img onclick="closeImg()" class="close-cross" src="../../media/public/closeCross.svg" alt="close Cross">
+        <img id="detail-image" class="img-detail-view" src = "">
+    </div>
+</div>
+
+<div id="contact" class="contact">
+    <div class="contact-outline">
+        <h2>Kontakt</h2>
+        <div class="wrapper">
+            <div class="contact-info">
+                <div class="single-info">
+                    <img src="../../media/public/icons/mail.svg" alt="">
+                    <div><a href="mailto:sworks@hotmail.com">sworks@hotmail.com</a></div>
+                </div>
+                <div class="single-info">
+                    <img src="../../media/public/icons/phone.svg" alt="">
+                    <div class="phonenr">
+                        <a href="+4917673838168">+49 176 738 381 68 (DE)</a>
+                        <a href="+41791278886">+41 79 127 88 86 (CH)</a>
+                    </div>
+                </div>
+            </div>
+            <div>
+                {% if submitted %}
+                <h3 class = "success">Vielen Dank für deine Nachricht. Ich habe sie erhalten und werde mich in Kürze bei dir melden.</h3>
+                {% else %}
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    {{ form_de.as_p}}
+                    <button class="primary-button" type="submit">Absenden</button>
+                </form>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

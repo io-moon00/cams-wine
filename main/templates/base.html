@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="../static/style/generalStyle.css">
+    <link rel="stylesheet" href="../static/style/header-footer.css">
+    <link rel="stylesheet" href="https://use.typekit.net/lkn6qbz.css">
+    <link rel="stylesheet" href="../static/style/home.css">
+    {% block stylesheets %}{% endblock %}
+    <!-- social Media Tags -->
+    <meta property="og:title" content="Cams Wine"/>
+    <meta property="og:description" content="Cams Wine Visitenkarte"/>
+    <meta property="og:image" content="https://camswine.de/media/public/cams-wine-logo.svg"/>
+    <meta property="twitter:title" content="Cams Wine"/>
+    <meta property="twitter:description" content="Cams Wine Visitenkarte"/>
+    <meta name="twitter:card" content="summary_large_image">
+    <meta property="twitter:image" content="https://camswine.de/media/public/cams-wine-logo.svg"/>
+
+
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="../../media/public/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../media/public/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../media/public/favicon/favicon-16x16.png">
+    <link rel="manifest" href="../../media/public/favicon/site.webmanifest">
+
+    <title>{% block title %}{% endblock %}</title>
+
+    <script src="../static/scripts/init.js"></script>
+</head>
+<body id="body">
+    {% if page.img %}
+    <div class="top-text top-text-{{ page.text_position }}" style="background-image: url({{ page.img.url }}); background-position: {{ page.img_position }};">
+        <div class="header-content">
+            <h2 class="page-title">{{ page.title }}</h2>
+            <a href="{% url 'home' %}#contact">Kontakt</a>
+        </div>
+    </div>
+    {% else %}
+    <div class="top-text top-text-right" style="background-image: url(../../media/public/header.png); background-position: center;">
+        <div class="header-content">
+            <h2 class="page-title">{{ page.title }}</h2>
+            <a href="{% url 'home' %}#contact">Kontakt</a>
+        </div>
+    </div>
+    {% endif %}
+    <main>
+        {% block content %}
+        
+        {% endblock %}
+    </main>
+    <footer>
+        <div class="wrapper">
+            <div>© {{ year }} camswine</div>
+            <div class="madeby"><img class="codecrusher-logo" src="../../media/public/logo-icon.svg" alt=""><a href="https://codecrusher.ch/">made by codecrusher</a></div>
+            <div class="links">
+                <a href="{% url 'impressum' %}">Impressum</a>
+                <a href="{% url 'dataprotection' %}">Datenschutzerklärung</a>
+                <a href="admin/">Login</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

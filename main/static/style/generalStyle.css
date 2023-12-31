@@ -1,0 +1,53 @@
+:root{
+    --main-color: #310400;
+    --main-color-text: #c9961a;
+    --main-color-text-hover: #7a5d13;
+    --max-width: 1000px;
+}
+
+html{
+  scroll-behavior: smooth;
+  scroll-padding-top: 90px;
+}
+
+/* Scroll bar */
+
+/* width */
+::-webkit-scrollbar {
+    width: 4px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #c9971a6e;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #310400;
+    border-radius: 2px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #0c150f;
+  }
+
+body{
+    font-family: Helvetica, sans-serif, Arial;
+    margin: 0;
+}
+
+main{
+    margin-top: 0px;
+}
+
+.d-none{
+  display: none !important;
+}
+
+.noscroll{
+  max-height: 100vh;
+  max-width: 100vw;
+  overflow: hidden;
+}
